@@ -4,7 +4,7 @@ import { render } from "react-dom";
 class User extends React.Component {
     render() {   
     return(
-    <div>
+    <div className="user" >
         <img width="200" src={this.props.user.avatar_url} alt="avatar"/>
         <div>
            <h2> {this.props.user.name}</h2>

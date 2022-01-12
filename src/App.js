@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import FollowerList from './components/FollowerList';
 import User from './components/User';
+import './styles.css'
 
 class App extends React.Component {
   state = {
@@ -46,6 +47,13 @@ class App extends React.Component {
               current: ''
           })
         })
+    axios.get(`https://api.github.com/users/${current}/followers`)
+        .then(resp =>{
+          this.setState({
+            ...this.state,
+            followers: resp.data
+          })
+        })
   }
 
   
@@ -60,6 +68,7 @@ class App extends React.Component {
         <User user={this.state.user}/>
       </div>
       <div>
+        <h2>Followers:</h2>
         <FollowerList followers={this.state.followers}/>
       </div>
     </div>);
